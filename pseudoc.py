@@ -12,5 +12,4 @@ def escape_time():
     return n
 
 
-
 print(f'The value of z survived {escape_time} iterations.')
