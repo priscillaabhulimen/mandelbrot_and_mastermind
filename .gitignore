@@ -5,3 +5,5 @@ env/,
 __pycache__/, 
 *.pyc
 pseudoc.py
+ch.py
+ms.py
