@@ -16,17 +16,25 @@ class Player(ABC):
         pass
 
 class HumanPlayer(Player):
+    """Represent a player who enters guesses through the terminal."""
+
     def __init__(self, name: str, sec_length: int):
+        """Initialize a named human player."""
         super().__init__(name, sec_length) 
 
     def get_guess(self) -> str:
-       return input(f"Guess (should be {self._sec_length} colours): ")
+        """Prompt the human player for a guess."""
+        return input(f"Guess (should be {self._sec_length} colours): ")
         
 
 class ComputerPlayer(Player):
+    """Represent a player that generates random guesses."""
+
     def __init__(self, sec_length: int):
+        """Initialize the computer player."""
         super().__init__("XJ9", sec_length) 
 
     def get_guess(self) -> str:
+        """Generate a random comma-separated colour guess."""
         guess_int = [random.randint(1,len(colours)) for _ in range(self._sec_length)]
         return ",".join([ntocol_dict[n] for n in guess_int])
