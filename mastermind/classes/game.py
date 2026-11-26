@@ -17,7 +17,7 @@ class Game:
         self._code = Code(code_length)
         self._players = []
 
-    def create_players(self):
+    def _create_players(self):
         """Create the players participating in the game."""
         self._players = []
         try:
@@ -71,7 +71,7 @@ class Game:
     def play(self) -> str:
         """Play rounds until a player wins or all attempts are exhausted."""
         if not self._players:
-            self.create_players()
+            self._create_players()
 
         for attempt in range(1, self._attempts_poss + 1):
             print(f"\nAttempt {attempt} of {self._attempts_poss}")
