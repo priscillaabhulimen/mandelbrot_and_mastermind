@@ -1,6 +1,22 @@
+import tkinter as tk
+
 class Display():
     def __init__(self):
         self.clear()
+
+        self.scale = 10
+        self.root = tk.Tk()
+        self.root.title("CHIP-8 Emulator")
+        self.root.geometry("640x320")
+        self.root.resizable(False, False)
+
+        self.canvas = tk.Canvas(
+            self.root,
+            width=64 * self.scale,
+            height=32 * self.scale,
+            bg="black"
+        )
+        self.canvas.pack()
 
     def clear(self):
         self.grid = [[0 for _ in range(64)] for _ in range(32)]
@@ -20,3 +36,29 @@ class Display():
 
                 self.grid[pixel_y][pixel_x] ^= bit
         return collision
+
+    def render(self):
+        self.canvas.delete("all")
+        for y in range(32):
+            for x in range(64):
+                if self.grid[y][x] == 1:
+                    left = x * self.scale
+                    top = y * self.scale
+                    right = left + self.scale
+                    bottom = top + self.scale
+
+                    self.canvas.create_rectangle(
+                        left, top, right, bottom,
+                        fill="white",
+                        outline="white"
+                    )
+
+
+# if __name__ == "__main__":
+#     display = Display()
+#     display.root.update_idletasks()
+
+#     display.grid[0][0] = 1
+#     display.render()
+
+#     display.root.mainloop()
