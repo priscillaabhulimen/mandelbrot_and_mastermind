@@ -24,10 +24,11 @@ def update_timers():
 cpu.display.root.after(1000 // 60, update_timers)
 
 def run_cycle():
-    opcode = cpu.fetch_opcode()
-    cpu.decode_execute_opcode(opcode)
-    cpu.display.render()
+    for _ in range(10):
+        opcode = cpu.fetch_opcode()
+        cpu.decode_execute_opcode(opcode)
 
+    cpu.display.render()
     cpu.display.root.after(10, run_cycle)
 
 cpu.display.root.after(0, run_cycle)
