@@ -1,5 +1,5 @@
 import random
-from ..utils import colours, ntocol_dict
+from mastermind.utils import colours, ntocol_dict
 from abc import ABC, abstractmethod
 
 class Player(ABC):

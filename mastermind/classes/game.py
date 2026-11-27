@@ -1,6 +1,6 @@
-from .code import Code
-from ..utils import colton_dict
-from .player import HumanPlayer, ComputerPlayer
+from mastermind.classes.code import Code
+from mastermind.utils import colton_dict
+from mastermind.classes.player import HumanPlayer, ComputerPlayer
 
 class Game:
     """Run a Mastermind game with human and computer players."""

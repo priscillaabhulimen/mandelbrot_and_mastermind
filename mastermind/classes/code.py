@@ -1,6 +1,6 @@
 import random
-from ..utils import colours,ntocol_dict,colton_dict
-from .feedback import Feedback
+from mastermind.utils import colours,ntocol_dict,colton_dict
+from mastermind.classes.feedback import Feedback
 
 class Code():
     """Generates and stores a secret code and scores guesses."""
