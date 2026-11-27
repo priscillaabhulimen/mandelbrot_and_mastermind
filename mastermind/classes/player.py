@@ -10,6 +10,11 @@ class Player(ABC):
         self._name = name
         self._sec_length = sec_length
 
+    @property
+    def name(self) -> str:
+        """Return the player's display name."""
+        return self._name
+
     @abstractmethod
     def get_guess(self) -> str:
         """Return the player's next guess."""
@@ -24,7 +29,11 @@ class HumanPlayer(Player):
 
     def get_guess(self) -> str:
         """Prompt the human player for a guess."""
-        return input(f"Guess (should be {self._sec_length} colours): ")
+        valid_colours = ", ".join(sorted(colours))
+        return input(
+            f"Guess {self._sec_length} comma-separated colours "
+            f"({valid_colours}): "
+        )
         
 
 class ComputerPlayer(Player):

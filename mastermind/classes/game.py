@@ -20,26 +20,30 @@ class Game:
     def _create_players(self):
         """Create the players participating in the game."""
         self._players = []
-        try:
-            p_count = int(input("Enter the number of players: "))
-            if p_count < 1 or p_count > 2:
-                raise ValueError("Number of players must be at least 1 and at most 2.")
-            self._player_count = p_count
-            if p_count == 1:
+        while True:
+            try:
+                p_count = int(input("Enter the number of players (1 or 2): "))
+            except ValueError:
+                print("Please enter 1 or 2.")
+                continue
+            if p_count in (1, 2):
+                break
+            print("The number of players must be 1 or 2.")
+
+        self._player_count = p_count
+        if p_count == 1:
+            name = input("Enter your name: ")
+            self._players.append(HumanPlayer(name, self._code_length))
+        else:
+            play_computer = self._is_hvc()
+            if play_computer:
                 name = input("Enter your name: ")
                 self._players.append(HumanPlayer(name, self._code_length))
+                self._players.append(ComputerPlayer(self._code_length))
             else:
-                play_computer = self._is_hvc()
-                if play_computer:
-                    name = input("Enter your name: ")
+                for i in range(p_count):
+                    name = input(f"Enter name for player {i + 1}: ")
                     self._players.append(HumanPlayer(name, self._code_length))
-                    self._players.append(ComputerPlayer(self._code_length))
-                else:
-                    for i in range(p_count):
-                        name = input(f"Enter name for player {i + 1}: ")
-                        self._players.append(HumanPlayer(name, self._code_length))
-        except ValueError as e:
-            print(f"Error: {e}")
 
     def _is_hvc(self) -> bool:
         """Prompt until the user chooses computer or human competition."""
@@ -89,9 +93,10 @@ class Game:
 
                 feedback = self._code.score(guess_peg)
                 print(feedback.message())
-                if feedback._exact == self._code_length:
-                    print(f"{player._name} wins!")
-                    return player._name
+                if feedback.exact == self._code_length:
+                    print(f"{player.name} wins!")
+                    return player.name
 
-        print("No player guessed the code. Game over.")
+        print(f"No player guessed the code. The secret was {self._code.reveal()}.")
+        print("Game over.")
         return ""

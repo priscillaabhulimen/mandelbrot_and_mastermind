@@ -7,6 +7,21 @@ class Feedback():
         self._wrong_position = wrong_position
         self._wrong_colour = wrong_colour
 
+    @property
+    def exact(self) -> int:
+        """Return the number of exact matches."""
+        return self._exact
+
+    @property
+    def wrong_position(self) -> int:
+        """Return the number of correct colours in the wrong position."""
+        return self._wrong_position
+
+    @property
+    def wrong_colour(self) -> int:
+        """Return the number of guessed colours absent from the code."""
+        return self._wrong_colour
+
     def message(self) -> str:
         """Return a readable description of the guess result."""
         return f"""You have:

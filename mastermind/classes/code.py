@@ -21,6 +21,10 @@ class Code():
         """Return the corresponding integer for a colour."""
         return colton_dict[color]
 
+    def reveal(self) -> str:
+        """Return the secret code as colour names."""
+        return ", ".join(self.get_color(peg).title() for peg in self._secret)
+
     def score(self, guess: list[int]) -> Feedback:
         """Score a guess against the secret code."""
         guess_res = self._compare_pegs(guess)
