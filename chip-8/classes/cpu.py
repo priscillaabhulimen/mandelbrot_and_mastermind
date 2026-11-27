@@ -22,6 +22,15 @@ class Cpu():
         self.PC += 2
         return opcode
 
+    def update_timers(self):
+        if self.delay_timer > 0:
+            self.delay_timer -= 1
+
+        if self.sound_timer > 0:
+            self.sound_timer -= 1
+            if self.sound_timer == 0:
+                print("BEEP!")
+
     def decode_execute_opcode(self, opcode):
         instruction = (opcode & 0xF000) >> 12
         x = (opcode & 0x0F00) >> 8

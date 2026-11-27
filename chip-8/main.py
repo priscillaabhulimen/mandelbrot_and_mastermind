@@ -14,6 +14,15 @@ memory.load_rom(rom)
 
 cpu = Cpu(memory)
 
+# cpu.sound_timer = 5
+# cpu.delay_timer = 5
+
+def update_timers():
+    cpu.update_timers()
+    cpu.display.root.after(1000 // 60, update_timers)
+
+cpu.display.root.after(1000 // 60, update_timers)
+
 def run_cycle():
     opcode = cpu.fetch_opcode()
     cpu.decode_execute_opcode(opcode)
