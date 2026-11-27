@@ -1,7 +1,7 @@
 from classes.memory import Memory
 from classes.cpu import Cpu
 
-with open("roms/2-ibm-logo.ch8", "rb") as file:
+with open("roms/3-corax+.ch8", "rb") as file:
     rom = file.read()
 
 memory = Memory()
