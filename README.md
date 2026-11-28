@@ -7,7 +7,7 @@ This repository contains three Python projects developed as part of a programmin
 ```text
 mandelbrot_and_mastermind/
 │
-├── chip-8/
+├── chip8/
 │   ├── classes/
 │   ├── roms/
 │   ├── tests/
@@ -88,8 +88,12 @@ Each project is contained in its own folder. Navigate into the relevant folder a
 For example, to run the CHIP-8 emulator:
 
 ```bash
-cd chip-8
+cd chip8
 python main.py
+```
+-OR-
+```bash
+python -m chip8.main
 ```
 
 Make sure the ROM you want to test is available in the `roms` folder.
