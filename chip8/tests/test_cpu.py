@@ -1,7 +1,7 @@
 import unittest
 
-from classes.cpu import Cpu
-from classes.memory import Memory
+from chip8.classes.cpu import Cpu
+from chip8.classes.memory import Memory
 
 
 def make_cpu() -> Cpu:

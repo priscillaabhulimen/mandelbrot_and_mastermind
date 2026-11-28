@@ -1,5 +1,5 @@
-from .memory import Memory
-from .display import Display
+from chip8.classes.memory import Memory
+from chip8.classes.display import Display
 
 class Cpu():
     def __init__(self, memory:Memory):

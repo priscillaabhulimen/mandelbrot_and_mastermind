@@ -1,7 +1,7 @@
-from classes.memory import Memory
-from classes.cpu import Cpu
+from chip8.classes.memory import Memory
+from chip8.classes.cpu import Cpu
 
-with open("roms/3-corax+.ch8", "rb") as file:
+with open("chip8/roms/3-corax+.ch8", "rb") as file:
     rom = file.read()
 
 memory = Memory()

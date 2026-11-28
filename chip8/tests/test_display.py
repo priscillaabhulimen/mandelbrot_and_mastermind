@@ -1,6 +1,6 @@
 import unittest
 
-from classes.display import Display
+from chip8.classes.display import Display
 
 
 class TestDisplay(unittest.TestCase):
